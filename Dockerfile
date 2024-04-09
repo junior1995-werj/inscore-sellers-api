@@ -23,4 +23,4 @@ RUN poetry config virtualenvs.create false && poetry install --no-dev
 ADD . /app/
 EXPOSE 8001
 
-ENTRYPOINT ["python", "./sellers_api/manage.py runserver", "0.0.0.0:8001"]
+ENTRYPOINT ["python", "sellers_api/manage.py", "runserver", "0.0.0.0:80"]
