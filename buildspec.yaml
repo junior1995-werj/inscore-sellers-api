@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+    pre_build:
+        commands:
+          - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 230291670968.dkr.ecr.us-east-1.amazonaws.com
+          
+    build:
+        commands:
+          - docker  build -t sellers_api .
+          - docker tag sellers_api:latest 230291670968.dkr.ecr.us-east-1.amazonaws.com/inscore/sellers_api:v11
+    post_build:
+        commands:
+          - echo Build completed on `date`
+          - echo Pushing the Docker images...
+          - docker push 230291670968.dkr.ecr.us-east-1.amazonaws.com/inscore/sellers_api:v11
+          - echo Writing image definitions file...
+          - printf '[{"name":"hello-world","imageUri":"%s"}]' 230291670968.dkr.ecr.us-east-1.amazonaws.com/inscore/sellers_api:v11 > imagedefinitions.json
+
+            
+artifacts:
+    files:
+        - './imagedefinitions.json'
