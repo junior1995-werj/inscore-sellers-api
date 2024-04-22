@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'sellers_api.wsgi.application'
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ["DATA_BASE_NAME"],
+        'NAME': config("DATA_BASE_NAME", default=""),
         'USER': config("DATA_BASE_USER", default=""),
         'PASSWORD': config("DATA_BASE_PASSWORD", default=""),
         'HOST': config("DATA_BASE_HOST", default=""),
@@ -173,5 +173,6 @@ AWS_ACCESS_KEY=config("AWS_ACCESS_KEY", default="")
 AWS_SECRET_KEY=config("AWS_SECRET_KEY", default="")
 AWS_REGION=config("AWS_REGION", default="")
 SQS_SCHEDULER_SERVICE_SYNC=config("SQS_SCHEDULER_SERVICE_SYNC", default="")
+SQS_SELLERS_CREATE_GROUP=config("SQS_SELLERS_CREATE_GROUP", default="")
 
 KEY_PASS = "C>KJUu=1KH#Vr+[OY2wj"

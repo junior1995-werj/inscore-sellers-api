@@ -6,6 +6,8 @@ def validate_cnpj(value):
     cnpj_validator = CNPJ()
     if not cnpj_validator.validate(value):
         raise ValidationError("SellerAPI error: CPNJ invalid")
+    if SellerModel.objects.filter(cnpj=value).exists():
+        raise ValidationError("SellerAPI error: CPNJ already exists in the database")
 
 def validate_email(value):
     if UserModel.objects.filter(email=value).exists():

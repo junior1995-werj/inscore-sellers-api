@@ -52,7 +52,7 @@ class SellerAuthViewSet(APIView):
         pass_db = cryptocode.decrypt(queryset.password, KEY_PASS)
 
         if pass_db == request.data['password']:
-            return Response({"seller_id": queryset.seller_id.id, "username": queryset.username}, status=status.HTTP_200_OK)
+            return Response({"seller_id": queryset.seller_id.id, "username": queryset.username, "plan_status": queryset.seller_id.plan}, status=status.HTTP_200_OK)
 
         return Response({'Sellers API': 'User e senha incorretos'}, status=200)
         

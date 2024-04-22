@@ -8,12 +8,12 @@ from sellers_api.settings import KEY_PASS
 
 class SellerModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     phone_number = models.CharField(max_length=20)
     status = models.BooleanField(default=True) 
-    plan_id = models.UUIDField(null=True)
-    cnpj = models.CharField(max_length=30)
-    created_at = models.DateTimeField(null=False, blank=True)
+    plan = models.BooleanField(default=False) 
+    cnpj = models.CharField(max_length=30, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now_add=True, blank=True)
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=100)

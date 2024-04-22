@@ -15,5 +15,4 @@ urlpatterns = [
     path('api/sellers-users/seller/<uuid:seller_id>/<str:username>', views.UserSellerIDViewSet.as_view({'get': 'list'}), name="sellers-users-seller-id"),
     path('api/sellers-users/seller/<uuid:seller_id>/', views.UserSellerIDViewSet.as_view({'get': 'list'}), name="sellers-users-seller-id-name"),
     path('api/seller-auth/', views.SellerAuthViewSet.as_view(), name="seller-auth")
-    
 ]
