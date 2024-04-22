@@ -34,7 +34,7 @@ class SellerGroupsModel(models.Model):
     class Meta:
         db_table = 'sellers_groups'
 
-@receiver(post_save, sender=SellerGroupsModel, dispatch_uid="card_proative_config_model_post_save")
+@receiver(post_save, sender=SellerGroupsModel, dispatch_uid="create_group_post_save_post_save")
 def create_group_post_save(sender, instance, created, **kwargs):
     if created:
         if instance.group_id == "0":

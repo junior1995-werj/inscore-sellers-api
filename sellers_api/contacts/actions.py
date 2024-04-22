@@ -12,6 +12,8 @@ sqs = boto3.resource(
 
 def send_message_sqs(instance): 
     message = {
+        "id":str(instance.id),
+        "seller_id":str(instance.seller_id.id),
         "subject": instance.group_name,
         "participants":instance.contacts_group
     }
