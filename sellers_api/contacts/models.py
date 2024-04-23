@@ -30,6 +30,8 @@ class SellerGroupsModel(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True, blank=True)
     status = models.BooleanField(default=True) 
     contacts_group = models.JSONField(null=True)
+    description = models.CharField(max_length=255, null=True)
+    restrict = models.BooleanField(null=True) 
 
     class Meta:
         db_table = 'sellers_groups'

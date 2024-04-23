@@ -15,7 +15,9 @@ def send_message_sqs(instance):
         "id":str(instance.id),
         "seller_id":str(instance.seller_id.id),
         "subject": instance.group_name,
-        "participants":instance.contacts_group
+        "participants":instance.contacts_group,
+        "description": instance.description,
+        "restrict": instance.restrict
     }
     
     queue = sqs.get_queue_by_name(QueueName=SQS_SELLERS_CREATE_GROUP)
